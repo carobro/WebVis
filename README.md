@@ -3,9 +3,7 @@
 
 Installiere Vega und Altair
 
-    npm install react-vega vega vega-lite
-
-(Bei Problem --force => Problem for later aktuell)
+    pip install altair-viewer altair
 
 Lasse den Python Code laufen (Erzeugt die VegaJason Struktur)
 
@@ -14,5 +12,5 @@ Lasse den Python Code laufen (Erzeugt die VegaJason Struktur)
 Starte die React WebApp
 
     cd frontend
-    npm start
+    npm run start
 
