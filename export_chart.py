@@ -1,0 +1,36 @@
+import altair as alt
+import pandas as pd
+import json
+import os
+import altair_viewer
+
+
+# Create dummy placeholder data (structure only — will be replaced in React)
+df = pd.DataFrame({
+    'x': [0],
+    'y': [0],
+    'category': ['A'],
+    'size': [10]
+})
+
+# Create a fancier Altair chart
+chart = alt.Chart(df).mark_circle().encode(
+    x=alt.X('x:Q', title='X Value'),
+    y=alt.Y('y:Q', title='Y Value'),
+    color=alt.Color('category:N', legend=None),
+    size=alt.Size('size:Q', scale=alt.Scale(range=[10, 300]))
+).properties(
+    width=700,
+    height=300
+)
+
+altair_viewer.show(chart)
+# Inject named dataset for dynamic data injection
+spec = chart.to_dict()
+spec['data'] = {'name': 'mydata'}
+
+# Save to JSON
+os.makedirs("frontend/public", exist_ok=True)
+with open("frontend/public/chart.json", "w") as f:
+    json.dump(spec, f)
+
