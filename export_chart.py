@@ -7,13 +7,12 @@ import altair_viewer
 
 # Create dummy placeholder data (structure only — will be replaced in React)
 df = pd.DataFrame({
-    'x': [0],
-    'y': [0],
-    'category': ['A'],
-    'size': [10]
+    'x':        [1,2,3,4,5,6],
+    'y':        [10,20,30,40,50,60,],
+    'category': ['A','B','A','B','C','C'],
+    'size':     [40 ,80 ,150,200,300,100]
 })
 
-# Create a fancier Altair chart
 chart = alt.Chart(df).mark_circle().encode(
     x=alt.X('x:Q', title='X Value'),
     y=alt.Y('y:Q', title='Y Value'),
